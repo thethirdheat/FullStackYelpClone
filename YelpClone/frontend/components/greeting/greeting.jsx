@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Greeting =(props)=>{
     /* note tahte its porops.history.push to chagne the page basically nooooo match lul*/
     const onSend = (event)=>( 
-        props.logout().then(res=>props.history.push('/wtfitsowrking??'))
+        props.logout()//.then(res=>props.history.push('/wtfitsowrking??'))
     )
 
     const withUser =()=>(

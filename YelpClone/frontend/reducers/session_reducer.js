@@ -7,7 +7,6 @@ const _nullUser = Object.freeze({
 const sessionsReducer = (state={},action)=>{
     Object.freeze(state)
     let newState = Object.assign({},state)
-    console.log("we are in the sessions reducer!!!!!!!!!!1")
     switch(action.type){
         case RECEIVE_SESSION:
             return { id: action.currentUser.id };

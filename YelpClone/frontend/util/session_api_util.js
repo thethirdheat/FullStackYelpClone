@@ -5,7 +5,6 @@
 
 
 export const signUp = (userForm)=>{
-    console.log(userForm)
 
     return $.ajax({ method:"post", url:"/api/users", data:userForm})
 }

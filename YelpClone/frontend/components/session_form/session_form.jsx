@@ -20,7 +20,6 @@ class SessionForm extends React.Component{
     }
     handleSumbit(e){
         e.preventDefault();
-        console.log("we are here??!")
         this.props.processSignUp({user: this.state}).then(()=>this.props.history.push('/lololol'))
     }
 

@@ -7,7 +7,6 @@ import Greeting from './greeting';
 
 //const mstp = ({ session, entities: { users } }) => {
 const mstp = (state,ownProps) => {
-    console.log(state,' thsi is the session!!!!!!!!1')
     let user =null
     if(state.session!==undefined){
       user = state.entities.user[state.session.id]
