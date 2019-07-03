@@ -2,9 +2,11 @@ import * as APIutil from '../util/session_api_util'
 export const RECEIVE_SESSION = "RECEIVE_SESSION"
 export const REMOVE_SESSION = "REMOVE_SESSION"
 
-const receive_session = (user)=>({
+
+  
+const receive_session = (currentUser)=>({
     type: RECEIVE_SESSION,
-    user
+    currentUser
 })
 const remove_session = ()=>({
     type: REMOVE_SESSION
