@@ -1,0 +1,52 @@
+
+*{
+    border: 1px solid green;
+}
+.login {
+  display:grid;
+  height:100vh;
+  grid-template-areas: "top top top"
+                        "left main right" ;
+  grid-template-columns: 1fr 1050px 1fr;
+  grid-template-rows: 65px 6fr 1fr;
+}
+
+.login--header{
+    grid-area: top;
+    border: 1px green solid;
+} 
+
+.login--left-addbar{
+    grid-area: left;
+    background: brown;
+    border: 1px black solid;
+}
+.login--right-addbar{
+    grid-area: right;
+    background: blue;
+    border: 1px black solid;
+}
+.login--main{
+    display: flex;
+    grid-area: main;
+    background: pink;
+    border: 1px red solid;
+}
+.login--footer{
+    border: 1px blue solid;
+}
+
+.login--form{
+    width: 300px;
+    height: 100%;
+}
+.login--picture{
+    transform: translate(-50%,-50%);
+    background: pink;
+    position: absolute;
+    top: 380px;
+    right: 42px;
+
+}
+
+

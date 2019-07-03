@@ -8,7 +8,7 @@ const Greeting =(props)=>{
     )
 
     const withUser =()=>(
-        <div>
+        <div className="whatever">
             <h2 className="">Hi, {props.currentUser.username}!</h2>
             <button className="" onClick={onSend}>Log Out</button >
         </div> 

@@ -7,8 +7,9 @@ class Api::UsersController < ApplicationController
             render '../views/api/users/show'
             #render plain: 'it worked lululul'
         else
-            flash.now[:errors] = @user.errors.full_messages
-            render plain: 'you fucked up'
+            render json: @user.errors.full_messages, status: 422
+            #flash.now[:errors] = @user.errors.full_messages
+            #render plain: 'you fucked up'
         end
     end
 

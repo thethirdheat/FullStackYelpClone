@@ -12,18 +12,18 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
+//    <header>
+//        <div className="fuck">get fucked</div>
+//        <GreetingContainer />
+//    </header>
 
         //<ProtectedRoute exact path ='/wtfitsowrking??' component ={Dummy}/>
 const App =()=>(
-<div>
-    Look at Me!
-    <header>
-        <GreetingContainer/>
-    </header>
+<div className ="stuff">
     <Switch>
         <AuthRoute exact path = "/login" component ={LoginContainer}/> 
         <AuthRoute exact path = "/users/new" component ={SignUpContainer}/> 
-        <ProtectedRoute exact path ="/wtf" component={Dummy}/>
+        <ProtectedRoute exact path ="/" component={Dummy}/>
     </Switch>
 
 </div>)
