@@ -5,7 +5,6 @@ import {
 
 export default (state = [], action) => {
   Object.freeze(state);
-  console.log(action,'this is erorr')
   switch (action.type) {
     case RECEIVE_SESSION_ERRORS:
       return action.errors;

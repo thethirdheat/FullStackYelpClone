@@ -243,7 +243,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Dummy = function Dummy() {
-  console.log("wtf dummy!");
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Look at Me! header goes here?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "fuck"
   }, "get fucked"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), "rest of stuff dummy thick");
@@ -325,7 +324,6 @@ var mstp = function mstp(state, ownProps) {
   if (state.session !== undefined) {
     user = state.entities.user[state.session.id];
   } //let user = state.session.id||null
-  //debugger
 
 
   return {
@@ -760,7 +758,6 @@ __webpack_require__.r(__webpack_exports__);
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
-  console.log(action, 'this is erorr');
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:

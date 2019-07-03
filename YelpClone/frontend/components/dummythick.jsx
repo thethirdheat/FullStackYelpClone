@@ -3,7 +3,6 @@ import GreetingContainer from './greeting/greeting_container'
 
 
 const Dummy=()=>{
-    console.log("wtf dummy!")
     return(<div>
         Look at Me!
         header goes here?

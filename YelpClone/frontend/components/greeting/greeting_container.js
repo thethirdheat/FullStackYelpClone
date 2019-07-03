@@ -12,7 +12,6 @@ const mstp = (state,ownProps) => {
       user = state.entities.user[state.session.id]
     }
     //let user = state.session.id||null
-    //debugger
   return {
     //currentUser: users[session.id]
     currentUser: user
