@@ -9,7 +9,7 @@ class Api::SessionsController < ApplicationController
             sign_in(@user)
             render '../views/api/sessions/show'
         else
-            render json: ["Invalid username/password combination"], status: 401
+            render json: ["The email address or password you entered is incorrect."], status: 401
 #            flash.now[:errors] = ['Invalid username or password']
 #            render :new
         end

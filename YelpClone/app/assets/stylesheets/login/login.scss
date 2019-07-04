@@ -4,7 +4,7 @@ $outer: 988px;
 $textInputBox: #E8F0FE;
 $facbookblue: #3B5998;
 *{
-    /*border: green .5px solid;*/
+    border: green .5px solid;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -246,4 +246,18 @@ $TESTING_COLOR_DELETE: orchid;
     display: flex;
     align-items: center;
     justify-content: center; 
+}
+
+.login--errors{
+    width:100%;
+    height: 60px;
+    grid-area: main;
+    background: #F6D5D3;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-top: 15px;
+
+
 }

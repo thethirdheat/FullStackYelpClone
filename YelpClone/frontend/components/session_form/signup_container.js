@@ -3,6 +3,7 @@ import {signUp} from '../../actions/session_actions'
 import SessionForm from './session_form'
 
 const mstp = (state,prevProps) =>({ 
+    errors: state.errors.session,
     user: "",
     password: "",
     email:""
