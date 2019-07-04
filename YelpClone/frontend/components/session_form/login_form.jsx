@@ -30,7 +30,7 @@ class LoginForm extends React.Component{
                 <div className ="login--header__container">
                     <div className="login--header__biz"  ><Link to ="/">SignUp as Business</Link> </div>
                     <br></br>
-                    <div className="login--header__logo"><Link to ="/">revw</Link></div>
+                    <div className="login--header__logo"><Link to ="/">🆁🅴🆅🆆</Link></div>
                 </div>
             </nav>
             <aside className="login--left-addbar"></aside>
@@ -39,13 +39,24 @@ class LoginForm extends React.Component{
                 <div className="login--form">
                     <h2 className="login--h1">Log In to Revw</h2>
                     <p className ="logn--text__signUp">New to Revw? <Link to ='/users/new'>Sign up</Link></p>
+                    <div className="login--form__bizSignUp">
+                        <div className="login--form__bizSignUp__text">
+                            Want Yelp for Business Owners?<br></br> 
+                            <Link to="/">Go there now »</Link> 
+                        </div>
+                    </div>
 
                     <div className="login--demo">
                         
                         <button className="login--demo__facebook"><span><img className ="login--button__ficon" src='https://i.imgur.com/wEd2n4n.png'/></span><span className="login--button__text">Demo Login with Facebook</span></button> 
                         
                         <button className="login--demo__google"><span><img className ="login--button__gicon" src="https://s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/cae242fd3929/assets/img/structural/24x24_google_rainbow.png"/></span><span className="login--button__text__g">Demo Login with Google</span></button> 
-                                            </div>
+                    </div>
+                    <div className="login--demo__or">
+                        <div className="login--demo__lineBreak"></div>
+                        <p className="login--demo__ortext">&nbsp;&nbsp;OR&nbsp;&nbsp;</p> 
+                        <div className="login--demo__lineBreak"></div>
+                    </div>
 
 
                     <form onSubmit = {this.handleSumbit}>
