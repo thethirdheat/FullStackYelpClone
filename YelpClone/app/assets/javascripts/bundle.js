@@ -464,12 +464,19 @@ function (_React$Component) {
       }
     };
     _this.handleSumbit = _this.handleSumbit.bind(_assertThisInitialized(_this));
+    _this.removeErr = _this.removeErr.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(LoginForm, [{
-    key: "remove",
-    value: function remove() {}
+    key: "removeErr",
+    value: function removeErr() {
+      window.alert("fuck");
+      var prev = Object.assign({}, this.state);
+      prev.errors = "";
+      console.log(prev, "this s p the new state");
+      this.setState(prev);
+    }
   }, {
     key: "update",
     value: function update(field) {
@@ -492,12 +499,24 @@ function (_React$Component) {
         user: this.state.user
       }).then(function () {
         return _this3.props.history.push('/');
+      }, function () {
+        if (_this3.props.errors) {
+          var prev = Object.assign({}, _this3.state);
+          prev.errors = _this3.props.errors;
+
+          _this3.setState(prev);
+        }
       });
     }
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state.errors);
+      var errDiv = this.state.errors.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login--errors"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.errors), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.removeErr,
+        className: "login--erors__cross"
+      }, "\xD7")) : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -514,9 +533,7 @@ function (_React$Component) {
         to: "/"
       }, "\uD83C\uDD81\uD83C\uDD74\uD83C\uDD85\uD83C\uDD86")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: "login--left-addbar"
-      }), this.state.errors.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "login--errors"
-      }, this.state.errors, " ") : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), errDiv, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login--main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login--main__container"
@@ -580,6 +597,7 @@ function (_React$Component) {
       }, "Sign Up"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login--picture"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        onClick: this.removeErr,
         src: "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png"
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: "login--right-addbar"

@@ -4,7 +4,7 @@ $outer: 988px;
 $textInputBox: #E8F0FE;
 $facbookblue: #3B5998;
 *{
-    border: green .5px solid;
+    /*border: green .5px solid;*/
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -257,7 +257,19 @@ $TESTING_COLOR_DELETE: orchid;
     display: flex;
     align-items: center;
     justify-content: center; 
-    margin-top: 15px;
-
-
+    margin-top: 15px; 
+    position: relative;
+}
+.login--erors__cross{
+    background: none;
+    border: none;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    z-index:3;
+    border-radius:50%;
+    width: 30px;
+    height: 30px;
+    font-size: 22px;
+    color: #B09E9D;
 }

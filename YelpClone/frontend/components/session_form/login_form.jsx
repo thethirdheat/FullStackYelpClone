@@ -13,9 +13,15 @@ class LoginForm extends React.Component{
             }
        }
         this.handleSumbit = this.handleSumbit.bind(this)
+        this.removeErr=this.removeErr.bind(this)
     } 
-    remove(){
 
+    removeErr(){
+        window.alert("fuck")
+        let prev=Object.assign({},this.state)
+        prev.errors=""
+        console.log(prev,"this s p the new state")
+        this.setState(prev)
     }
 
     update(field){
@@ -29,11 +35,20 @@ class LoginForm extends React.Component{
     }
     handleSumbit(e){
         e.preventDefault();
-        this.props.processSignUp({user: this.state.user}).then(()=>this.props.history.push('/'))
+        this.props.processSignUp({user: this.state.user}).then(()=>this.props.history.push('/'),()=>{
+            if(this.props.errors){
+                let prev=Object.assign({},this.state)
+                prev.errors= this.props.errors 
+                this.setState(prev)
+            }
+        })
     }
 
     render(){
-        console.log(this.state.errors)
+        const errDiv=this.state.errors.length ?<div className="login--errors">
+
+        <p>{this.state.errors}</p> <button onClick={this.removeErr} className="login--erors__cross">&times;</button>
+        </div>:""
         return (<div className ="login">
 
             <nav className ="login--header">
@@ -44,7 +59,9 @@ class LoginForm extends React.Component{
                 </div>
             </nav>
             <aside className="login--left-addbar"></aside>
-            {this.state.errors.length ?<div className="login--errors">{this.state.errors} </div>:""}
+            {errDiv}
+
+
             <br></br>
             <div className="login--main"> 
                 <div className="login--main__container"> 
@@ -86,7 +103,7 @@ class LoginForm extends React.Component{
 
                     </div>
                     <div className="login--picture">
-                        <img src="https://s3-media4.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png"/>
+                        <img onClick={this.removeErr}  src="https://s3-media4.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png"/>
                     </div>
                 </div>
             </div>
