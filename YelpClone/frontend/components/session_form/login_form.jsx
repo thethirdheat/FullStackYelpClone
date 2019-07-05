@@ -15,6 +15,20 @@ class LoginForm extends React.Component{
         this.handleSumbit = this.handleSumbit.bind(this)
         this.removeErr=this.removeErr.bind(this)
     } 
+    demoLogin(e){
+        const facebook= {username: 'FacebookUser', password:'password'}
+        const google = {username: 'GoogleUser', password:'password'}
+        e.preventDefault();
+        this.props.processSignUp({user: this.state.user}).then(()=>this.props.history.push('/'),()=>{
+            if(this.props.errors){
+                let prev=Object.assign({},this.state)
+                prev.errors= this.props.errors 
+                this.setState(prev)
+            }
+        })
+    }
+
+
 
     removeErr(){
         let prev=Object.assign({},this.state)

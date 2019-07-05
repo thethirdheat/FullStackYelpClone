@@ -10,4 +10,7 @@
 
 
 DemoUserFacebook = {username: 'FacebookUser', email: 'FacebookUser@facebook.com', password:'password'}
+DemoUserGoogle = {username: 'GoogleUser', email: 'GoogleUser@gmail.com', password:'password'}
+
 User.create(DemoUserFacebook)
+User.create(DemoUserGoogle)

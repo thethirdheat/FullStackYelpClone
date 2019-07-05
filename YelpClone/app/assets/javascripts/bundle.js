@@ -469,6 +469,33 @@ function (_React$Component) {
   }
 
   _createClass(LoginForm, [{
+    key: "demoLogin",
+    value: function demoLogin(e) {
+      var _this2 = this;
+
+      var facebook = {
+        username: 'FacebookUser',
+        password: 'password'
+      };
+      var google = {
+        username: 'GoogleUser',
+        password: 'password'
+      };
+      e.preventDefault();
+      this.props.processSignUp({
+        user: this.state.user
+      }).then(function () {
+        return _this2.props.history.push('/');
+      }, function () {
+        if (_this2.props.errors) {
+          var prev = Object.assign({}, _this2.state);
+          prev.errors = _this2.props.errors;
+
+          _this2.setState(prev);
+        }
+      });
+    }
+  }, {
     key: "removeErr",
     value: function removeErr() {
       var prev = Object.assign({}, this.state);
@@ -479,31 +506,31 @@ function (_React$Component) {
   }, {
     key: "update",
     value: function update(field) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        var prev = Object.assign({}, _this2.state);
+        var prev = Object.assign({}, _this3.state);
         prev.user[field] = e.target.value;
         console.log(prev);
-        return _this2.setState(prev);
+        return _this3.setState(prev);
       };
     }
   }, {
     key: "handleSumbit",
     value: function handleSumbit(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       e.preventDefault();
       this.props.processSignUp({
         user: this.state.user
       }).then(function () {
-        return _this3.props.history.push('/');
+        return _this4.props.history.push('/');
       }, function () {
-        if (_this3.props.errors) {
-          var prev = Object.assign({}, _this3.state);
-          prev.errors = _this3.props.errors;
+        if (_this4.props.errors) {
+          var prev = Object.assign({}, _this4.state);
+          prev.errors = _this4.props.errors;
 
-          _this3.setState(prev);
+          _this4.setState(prev);
         }
       });
     }
@@ -667,10 +694,62 @@ function (_React$Component) {
     };
     _this.handleSumbit = _this.handleSumbit.bind(_assertThisInitialized(_this));
     _this.removeErr = _this.removeErr.bind(_assertThisInitialized(_this));
+    _this.demoLoginFacebook = _this.demoLoginFacebook.bind(_assertThisInitialized(_this));
+    _this.demoLoginGoogle = _this.demoLoginGoogle.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(SessionForm, [{
+    key: "demoLoginFacebook",
+    value: function demoLoginFacebook(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var facebook = {
+        username: 'FacebookUser',
+        password: 'password'
+      };
+      var google = {
+        username: 'GoogleUser',
+        password: 'password'
+      };
+      this.props.signIn({
+        user: facebook
+      }).then(function () {
+        return _this2.props.history.push('/');
+      }, function () {
+        if (_this2.props.errors) {
+          var prev = Object.assign({}, _this2.state);
+          prev.errors = _this2.props.errors;
+
+          _this2.setState(prev);
+        }
+      });
+    }
+  }, {
+    key: "demoLoginGoogle",
+    value: function demoLoginGoogle(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var google = {
+        username: 'GoogleUser',
+        password: 'password'
+      };
+      this.props.signIn({
+        user: google
+      }).then(function () {
+        return _this3.props.history.push('/');
+      }, function () {
+        if (_this3.props.errors) {
+          var prev = Object.assign({}, _this3.state);
+          prev.errors = _this3.props.errors;
+
+          _this3.setState(prev);
+        }
+      });
+    }
+  }, {
     key: "removeErr",
     value: function removeErr() {
       var prev = Object.assign({}, this.state);
@@ -681,30 +760,30 @@ function (_React$Component) {
   }, {
     key: "update",
     value: function update(field) {
-      var _this2 = this;
+      var _this4 = this;
 
       return function (e) {
-        var prev = Object.assign({}, _this2.state);
+        var prev = Object.assign({}, _this4.state);
         prev.user[field] = e.target.value;
-        return _this2.setState(prev);
+        return _this4.setState(prev);
       };
     }
   }, {
     key: "handleSumbit",
     value: function handleSumbit(e) {
-      var _this3 = this;
+      var _this5 = this;
 
       e.preventDefault();
       this.props.processSignUp({
         user: this.state.user
       }).then(function () {
-        return _this3.props.history.push('/');
+        return _this5.props.history.push('/');
       }, function () {
-        if (_this3.props.errors) {
-          var prev = Object.assign({}, _this3.state);
-          prev.errors = _this3.props.errors;
+        if (_this5.props.errors) {
+          var prev = Object.assign({}, _this5.state);
+          prev.errors = _this5.props.errors;
 
-          _this3.setState(prev);
+          _this5.setState(prev);
         }
       });
     }
@@ -745,6 +824,7 @@ function (_React$Component) {
       }, "Connect with great local businesses"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login--demo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.demoLoginFacebook,
         className: "login--demo__facebook"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "login--button__ficon",
@@ -752,6 +832,7 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "login--button__text"
       }, "Demo Login with Facebook")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.demoLoginGoogle,
         className: "login--demo__google"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "login--button__gicon",
@@ -843,6 +924,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mstp = function mstp(state, prevProps) {
   return {
     errors: state.errors.session,
@@ -856,6 +938,9 @@ var mdtp = function mdtp(dispatch) {
   return {
     processSignUp: function processSignUp(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["signUp"])(user));
+    },
+    signIn: function signIn(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(user));
     }
   };
 };
