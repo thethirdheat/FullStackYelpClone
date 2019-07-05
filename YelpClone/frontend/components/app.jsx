@@ -23,7 +23,7 @@ const App =()=>(
     <Switch>
         <AuthRoute exact path = "/login" component ={LoginContainer}/> 
         <AuthRoute exact path = "/users/new" component ={SignUpContainer}/> 
-        <ProtectedRoute exact path ="/" component={Dummy}/>
+        <ProtectedRoute  path ="/" component={Dummy}/>
     </Switch>
 
 </div>)

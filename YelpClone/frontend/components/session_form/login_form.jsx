@@ -14,12 +14,25 @@ class LoginForm extends React.Component{
        }
         this.handleSumbit = this.handleSumbit.bind(this)
         this.removeErr=this.removeErr.bind(this)
+        this.demoLoginGoogle = this.demoLoginGoogle.bind(this)
+        this.demoLoginFacebook = this.demoLoginFacebook.bind(this)
     } 
-    demoLogin(e){
-        const facebook= {username: 'FacebookUser', password:'password'}
-        const google = {username: 'GoogleUser', password:'password'}
+    demoLoginFacebook(e){
         e.preventDefault();
-        this.props.processSignUp({user: this.state.user}).then(()=>this.props.history.push('/'),()=>{
+
+        const facebook= {username: 'FacebookUser', password:'password'}
+        this.props.processSignUp({user:facebook}).then(()=>this.props.history.push('/'),()=>{
+            if(this.props.errors){
+                let prev=Object.assign({},this.state)
+                prev.errors= this.props.errors 
+                this.setState(prev)
+            }
+        })
+    }
+    demoLoginGoogle(e){
+        e.preventDefault(); 
+        const google = {username: 'GoogleUser', password:'password'}
+        this.props.processSignUp({user:google}).then(()=>this.props.history.push('/'),()=>{
             if(this.props.errors){
                 let prev=Object.assign({},this.state)
                 prev.errors= this.props.errors 
@@ -90,9 +103,9 @@ class LoginForm extends React.Component{
 
                         <div className="login--demo">
                             
-                            <button className="login--demo__facebook"><span><img className ="login--button__ficon" src='https://i.imgur.com/wEd2n4n.png'/></span><span className="login--button__text">Demo Login with Facebook</span></button> 
+                            <button onClick={this.demoLoginFacebook} className="login--demo__facebook"><span><img className ="login--button__ficon" src='https://i.imgur.com/wEd2n4n.png'/></span><span className="login--button__text">Demo Login with Facebook</span></button> 
                             
-                            <button className="login--demo__google"><span><img className ="login--button__gicon" src="https://s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/cae242fd3929/assets/img/structural/24x24_google_rainbow.png"/></span><span className="login--button__text__g">Demo Login with Google</span></button> 
+                            <button onClick={this.demoLoginGoogle} className="login--demo__google"><span><img className ="login--button__gicon" src="https://s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/cae242fd3929/assets/img/structural/24x24_google_rainbow.png"/></span><span className="login--button__text__g">Demo Login with Google</span></button> 
                         </div>
                         <div className="login--demo__or">
                             <div className="login--demo__lineBreak"></div>
