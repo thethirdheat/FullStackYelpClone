@@ -6,26 +6,50 @@ class SessionForm extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            username: "",
-            password:"",
-            email:""
+            errors: this.props.errors,
+            user: {
+                username: "",
+                password:"",
+                email:""
+
+            }
         }
         this.handleSumbit = this.handleSumbit.bind(this)
+        this.removeErr=this.removeErr.bind(this)
     } 
-
+    removeErr(){
+        let prev=Object.assign({},this.state)
+        prev.errors=""
+        console.log(prev,"this s p the new state")
+        this.setState(prev)
+    }
     update(field){
-        return (e)=>(
-            this.setState({[field]: e.target.value}) 
-        )
+        return (e)=>{
+            let prev=Object.assign({},this.state)
+            prev.user[field]= e.target.value
+            return this.setState(prev) 
+        }
 
     }
+
+
     handleSumbit(e){
         e.preventDefault();
-        this.props.processSignUp({user: this.state}).then(()=>this.props.history.push('/lololol'))
+        this.props.processSignUp({user: this.state.user}).then(()=>this.props.history.push('/'), ()=>{
+            if(this.props.errors){
+                let prev=Object.assign({},this.state)
+                prev.errors= this.props.errors 
+                this.setState(prev)
+            }
+        })
     }
 
     render(){
-        console.log(this.props.errors)
+        console.log(this.state)
+        const errDiv=this.state.errors.length ?<div className="login--errors">
+
+        <p>{this.state.errors.join(", ")}.</p> <button onClick={this.removeErr} className="login--erors__cross">&times;</button>
+        </div>:""
 
         return (<div className ="login">
 
@@ -36,10 +60,11 @@ class SessionForm extends React.Component{
                     <div className="login--header__logo"><Link to ="/">🆁🅴🆅🆆</Link></div>
                 </div>
             </nav>
-            <div> this is errors 
-                <div>{this.props.errors}</div>
-            </div>
+
             <aside className="login--left-addbar"></aside>
+
+            {errDiv}
+
             <div className="login--main"> 
 
                 <div className="login--form">

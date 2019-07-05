@@ -471,7 +471,6 @@ function (_React$Component) {
   _createClass(LoginForm, [{
     key: "removeErr",
     value: function removeErr() {
-      window.alert("fuck");
       var prev = Object.assign({}, this.state);
       prev.errors = "";
       console.log(prev, "this s p the new state");
@@ -597,7 +596,6 @@ function (_React$Component) {
       }, "Sign Up"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login--picture"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        onClick: this.removeErr,
         src: "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png"
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: "login--right-addbar"
@@ -627,8 +625,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -662,21 +658,35 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this, props));
     _this.state = {
-      username: "",
-      password: "",
-      email: ""
+      errors: _this.props.errors,
+      user: {
+        username: "",
+        password: "",
+        email: ""
+      }
     };
     _this.handleSumbit = _this.handleSumbit.bind(_assertThisInitialized(_this));
+    _this.removeErr = _this.removeErr.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(SessionForm, [{
+    key: "removeErr",
+    value: function removeErr() {
+      var prev = Object.assign({}, this.state);
+      prev.errors = "";
+      console.log(prev, "this s p the new state");
+      this.setState(prev);
+    }
+  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
 
       return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.target.value));
+        var prev = Object.assign({}, _this2.state);
+        prev.user[field] = e.target.value;
+        return _this2.setState(prev);
       };
     }
   }, {
@@ -686,15 +696,28 @@ function (_React$Component) {
 
       e.preventDefault();
       this.props.processSignUp({
-        user: this.state
+        user: this.state.user
       }).then(function () {
-        return _this3.props.history.push('/lololol');
+        return _this3.props.history.push('/');
+      }, function () {
+        if (_this3.props.errors) {
+          var prev = Object.assign({}, _this3.state);
+          prev.errors = _this3.props.errors;
+
+          _this3.setState(prev);
+        }
       });
     }
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props.errors);
+      console.log(this.state);
+      var errDiv = this.state.errors.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login--errors"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.errors.join(", "), "."), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.removeErr,
+        className: "login--erors__cross"
+      }, "\xD7")) : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -709,9 +732,9 @@ function (_React$Component) {
         className: "login--header__logo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "\uD83C\uDD81\uD83C\uDD74\uD83C\uDD85\uD83C\uDD86")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " this is errors", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.errors)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
+      }, "\uD83C\uDD81\uD83C\uDD74\uD83C\uDD85\uD83C\uDD86")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: "login--left-addbar"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), errDiv, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login--main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login--form"

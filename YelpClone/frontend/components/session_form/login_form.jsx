@@ -17,7 +17,6 @@ class LoginForm extends React.Component{
     } 
 
     removeErr(){
-        window.alert("fuck")
         let prev=Object.assign({},this.state)
         prev.errors=""
         console.log(prev,"this s p the new state")
@@ -103,7 +102,7 @@ class LoginForm extends React.Component{
 
                     </div>
                     <div className="login--picture">
-                        <img onClick={this.removeErr}  src="https://s3-media4.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png"/>
+                        <img  src="https://s3-media4.fl.yelpcdn.com/assets/2/www/img/7922e77f338d/signup/signup_illustration.png"/>
                     </div>
                 </div>
             </div>
